@@ -1,10 +1,11 @@
-package tech.zerofiltre.freeland.collab.domain.servicecontract.model;
+package tech.zerofiltre.freeland.billing.domain.serviceContract.model;
 
-import tech.zerofiltre.freeland.collab.domain.*;
+import tech.zerofiltre.freeland.billing.domain.*;
 
 import java.util.*;
 
 public class ServiceContractEvent {
+
     private final long serviceContractNumber;
     private final String clientName;
     private final String clientSiren;
@@ -17,6 +18,7 @@ public class ServiceContractEvent {
     private final Rate.Currency rateCurrency;
     private final float serviceFeesRate;
     private final Date startDate;
+
 
     public ServiceContractEvent(long serviceContractNumber, String clientName, String clientSiren, String freelancerName, String freelancerSiren, String agencyName, String agencySiren, float rateValue, Rate.Frequency rateFrequency, Rate.Currency rateCurrency, float serviceFeesRate, Date startDate) {
         this.serviceContractNumber = serviceContractNumber;
@@ -41,43 +43,54 @@ public class ServiceContractEvent {
         return clientName;
     }
 
+
     public String getClientSiren() {
         return clientSiren;
     }
+
 
     public String getFreelancerName() {
         return freelancerName;
     }
 
+
     public String getFreelancerSiren() {
         return freelancerSiren;
     }
+
 
     public String getAgencyName() {
         return agencyName;
     }
 
+
     public String getAgencySiren() {
         return agencySiren;
     }
+
 
     public float getRateValue() {
         return rateValue;
     }
 
+
     public Rate.Frequency getRateFrequency() {
         return rateFrequency;
     }
+
 
     public Rate.Currency getRateCurrency() {
         return rateCurrency;
     }
 
+
     public float getServiceFeesRate() {
         return serviceFeesRate;
     }
 
+
     public Date getStartDate() {
         return startDate;
     }
+
 }

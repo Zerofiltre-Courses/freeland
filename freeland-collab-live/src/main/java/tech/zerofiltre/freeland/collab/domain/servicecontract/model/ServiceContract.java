@@ -33,6 +33,58 @@ public class ServiceContract {
         this.serviceContractNotificationProvider = serviceContractBuilder.serviceContractNotificationProvider;
     }
 
+    public ServiceContract start(){
+        serviceContractId = serviceContractProvider.registerContract(this).getServiceContractId();
+        return this;
+    }
+
+    public Optional<ServiceContract> of(ServiceContractId serviceContractId) {
+        Optional<ServiceContract> result = serviceContractProvider.serviceContractOfId(serviceContractId);
+        result.ifPresent(serviceContract -> {
+            serviceContract.serviceContractProvider = this.serviceContractProvider;
+            serviceContract.serviceContractNotificationProvider = this.serviceContractNotificationProvider;
+        });
+        return result;
+    }
+    public void notifyServiceContractStarted(){
+        ServiceContractStarted event = new ServiceContractStarted(
+                serviceContractId.getContractNumber(),
+                clientId.getName(),
+                clientId.getSiren(),
+                wagePortageAgreement.getFreelancerId().getName(),
+                wagePortageAgreement.getFreelancerId().getSiren(),
+                wagePortageAgreement.getAgencyId().getName(),
+                wagePortageAgreement.getAgencyId().getSiren(),
+                rate.getValue(),
+                rate.getFrequency(),
+                rate.getCurrency(),
+                wagePortageAgreement.getServiceFeesRate(),
+                this.getStartDate()
+        );
+        notify(event);
+    }
+
+    public void notifyContractStarted(){
+        ServiceContractStarted event = new ServiceContractStarted(
+                serviceContractId.getContractNumber(),
+                clientId.getName(),
+                clientId.getSiren(),
+                wagePortageAgreement.getFreelancerId().getName(),
+                wagePortageAgreement.getFreelancerId().getSiren(),
+                wagePortageAgreement.getAgencyId().getName(),
+                wagePortageAgreement.getAgencyId().getSiren(),
+                rate.getValue(),
+                rate.getFrequency(),
+                rate.getCurrency(),
+                wagePortageAgreement.getServiceFeesRate(),
+                this.getStartDate()
+        );
+        notify(event);
+    }
+    private void notify(ServiceContractEvent event) {
+        serviceContractNotificationProvider.notify(event);
+    }
+
     public ServiceContractProvider getServiceContractProvider() {
         return serviceContractProvider;
     }
@@ -83,6 +135,17 @@ public class ServiceContract {
         private String terms;
         private Date startDate;
         private Date endDate;
+
+        public ServiceContractBuilder copy(ServiceContract serviceContract) {
+            this.wagePortageAgreement = serviceContract.wagePortageAgreement;
+            this.clientId = serviceContract.clientId;
+            this.terms = serviceContract.terms;
+            this.rate = serviceContract.rate;
+            this.startDate = serviceContract.startDate;
+            this.endDate = serviceContract.endDate;
+            this.serviceContractId = serviceContract.serviceContractId;
+            return this;
+        }
 
         public ServiceContractBuilder serviceContractProvider(ServiceContractProvider serviceContractProvider) {
             this.serviceContractProvider = serviceContractProvider;

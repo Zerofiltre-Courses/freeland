@@ -27,6 +27,17 @@ public class Freelancer {
         this.skills = freelancerBuilder.skills;
         this.freelancerProvider = freelancerBuilder.freelancerProvider;
     }
+    public Freelancer register() {
+        this.freelancerId = freelancerProvider.registerFreelancer(this).getFreelancerId();
+        return this;
+    }
+
+    public Optional<Freelancer> of(FreelancerId freelancerId) {
+        Optional<Freelancer> result = freelancerProvider.freelancerOfId(freelancerId);
+        result.ifPresent(freelancer -> freelancer.freelancerProvider = this.freelancerProvider);
+        return result;
+    }
+
 
     public static FreelancerBuilder builder() {
         return new FreelancerBuilder();

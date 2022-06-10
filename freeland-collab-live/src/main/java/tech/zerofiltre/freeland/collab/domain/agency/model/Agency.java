@@ -3,6 +3,8 @@ package tech.zerofiltre.freeland.collab.domain.agency.model;
 import tech.zerofiltre.freeland.collab.domain.*;
 import tech.zerofiltre.freeland.collab.domain.agency.*;
 
+import java.util.*;
+
 public class Agency {
     private AgencyId agencyId;
     private String description;
@@ -16,6 +18,10 @@ public class Agency {
         this.phoneNumber = agencyBuilder.phoneNumber;
         this.address = agencyBuilder.address;
         this.agencyProvider = agencyBuilder.agencyProvider;
+    }
+
+    public static AgencyBuilder builder() {
+        return new AgencyBuilder();
     }
 
     public AgencyId getAgencyId() {
@@ -38,8 +44,15 @@ public class Agency {
         return agencyProvider;
     }
 
-    public static AgencyBuilder builder(){
-        return new AgencyBuilder();
+    public Agency register() {
+        this.agencyId = agencyProvider.registerAgency(this).getAgencyId();
+        return this;
+    }
+
+    public Optional<Agency> of(AgencyId agencyId){
+        Optional<Agency> result = agencyProvider.agencyOfId(agencyId);
+        result.ifPresent(agency -> agency.agencyProvider = this.agencyProvider);
+        return result;
     }
 
     public static class AgencyBuilder {
@@ -51,7 +64,7 @@ public class Agency {
         private AgencyProvider agencyProvider;
 
 
-        public AgencyBuilder agencyProvider(AgencyProvider agencyProvider){
+        public AgencyBuilder agencyProvider(AgencyProvider agencyProvider) {
             this.agencyProvider = agencyProvider;
             return this;
         }
@@ -60,6 +73,7 @@ public class Agency {
             this.agencyId = agencyId;
             return this;
         }
+
         public AgencyBuilder description(String description) {
             this.description = description;
             return this;
@@ -75,7 +89,7 @@ public class Agency {
             return this;
         }
 
-        public Agency build(){
+        public Agency build() {
             return new Agency(this);
         }
 

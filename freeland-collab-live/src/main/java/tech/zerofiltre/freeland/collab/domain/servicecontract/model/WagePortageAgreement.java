@@ -20,6 +20,16 @@ public class WagePortageAgreement {
     public WagePortageAgreementProvider getWagePortageAgreementProvider() {
         return wagePortageAgreementProvider;
     }
+    public WagePortageAgreement register() {
+        this.wagePortageAgreementId = wagePortageAgreementProvider.registerWagePortageAgreement(this).getWagePortageAgreementId();
+        return this;
+    }
+
+    public Optional<WagePortageAgreement> of(WagePortageAgreementId wagePortageAgreementId) {
+        Optional<WagePortageAgreement> result = wagePortageAgreementProvider.wagePortageAgreementOfId(wagePortageAgreementId);
+        result.ifPresent(wagePortageAgreement -> wagePortageAgreement.wagePortageAgreementProvider = this.wagePortageAgreementProvider);
+        return result;
+    }
 
     public WagePortageAgreementId getWagePortageAgreementId() {
         return wagePortageAgreementId;
@@ -72,6 +82,18 @@ public class WagePortageAgreement {
         private String terms;
         private Date startDate;
         private Date endDate;
+
+        public WagePortageAgreementBuilder copy(WagePortageAgreement wagePortageAgreement){
+            this.wagePortageAgreementId = wagePortageAgreement.getWagePortageAgreementId();
+            this.wagePortageAgreementProvider = wagePortageAgreement.getWagePortageAgreementProvider();
+            this.freelancerId = wagePortageAgreement.getFreelancerId();
+            this.agencyId = wagePortageAgreement.getAgencyId();
+            this.serviceFeesRate = wagePortageAgreement.getServiceFeesRate();
+            this.terms = wagePortageAgreement.getTerms();
+            this.startDate = wagePortageAgreement.getStartDate();
+            this.endDate = wagePortageAgreement.getEndDate();
+            return this;
+        }
 
         public WagePortageAgreementBuilder wagePortageAgreementProvider(WagePortageAgreementProvider wagePortageAgreementProvider) {
             this.wagePortageAgreementProvider = wagePortageAgreementProvider;
