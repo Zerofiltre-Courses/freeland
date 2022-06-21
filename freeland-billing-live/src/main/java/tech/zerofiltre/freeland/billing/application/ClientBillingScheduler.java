@@ -39,7 +39,7 @@ public class ClientBillingScheduler {
                 .amount(amount)
                 .agencyId(agencyId)
                 .issuedDate(LocalDateTime.now())
-                .executionPeriod(LocalDateTime.now().minusMonths(1))
+                .executionPeriod(LocalDateTime.now())
                 .billProvider(billProvider)
                 .build().send();
 

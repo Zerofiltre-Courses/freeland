@@ -34,6 +34,7 @@ public class Bill {
 
     public Bill send(){
         billId = billProvider.registerBill(this).billId;
+        //
         System.out.println("Bill of amount " + amount + " sent to Client "+ clientId);
         return this;
     }

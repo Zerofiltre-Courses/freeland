@@ -113,7 +113,7 @@ class ClientBillingSchedulerTest {
         assertThat(registeredBill.isPaid()).isFalse();
 
         assertThat(registeredBill.getExecutionPeriod().getMonthValue())
-                .isEqualTo(LocalDateTime.now().getMonth().minus(1).getValue());
+                .isEqualTo(LocalDateTime.now().getMonth().getValue());
 
 
     }

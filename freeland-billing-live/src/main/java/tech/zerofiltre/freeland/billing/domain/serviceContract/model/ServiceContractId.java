@@ -3,14 +3,14 @@ package tech.zerofiltre.freeland.billing.domain.serviceContract.model;
 
 public class ServiceContractId {
 
-  private final Long contractNumber;
+  private final long contractNumber;
 
 
-  public ServiceContractId(Long contractNumber) {
+  public ServiceContractId(long contractNumber) {
     this.contractNumber = contractNumber;
   }
 
-  public Long getContractNumber() {
+  public long getContractNumber() {
     return contractNumber;
   }
 }
