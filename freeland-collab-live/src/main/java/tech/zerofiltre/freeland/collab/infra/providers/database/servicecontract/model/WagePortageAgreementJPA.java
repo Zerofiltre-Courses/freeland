@@ -1,8 +1,8 @@
 package tech.zerofiltre.freeland.collab.infra.providers.database.servicecontract.model;
 
 import lombok.*;
-import tech.zerofiltre.freeland.infra.providers.database.agency.model.*;
-import tech.zerofiltre.freeland.infra.providers.database.freelancer.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.agency.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.freelancer.model.*;
 
 import javax.persistence.*;
 import java.util.*;

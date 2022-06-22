@@ -2,14 +2,15 @@ package tech.zerofiltre.freeland.collab.infra.providers.database.servicecontract
 
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.*;
-import tech.zerofiltre.freeland.domain.agency.model.*;
-import tech.zerofiltre.freeland.domain.freelancer.model.*;
-import tech.zerofiltre.freeland.domain.servicecontract.model.*;
-import tech.zerofiltre.freeland.infra.providers.database.agency.*;
-import tech.zerofiltre.freeland.infra.providers.database.agency.model.*;
-import tech.zerofiltre.freeland.infra.providers.database.freelancer.*;
-import tech.zerofiltre.freeland.infra.providers.database.freelancer.model.*;
-import tech.zerofiltre.freeland.infra.providers.database.serviceContract.model.*;
+import tech.zerofiltre.freeland.collab.domain.agency.model.*;
+import tech.zerofiltre.freeland.collab.domain.freelancer.model.*;
+import tech.zerofiltre.freeland.collab.domain.servicecontract.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.agency.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.agency.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.freelancer.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.freelancer.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.database.servicecontract.model.*;
+;
 
 @Mapper(componentModel = "spring")
 public abstract class WagePortageAgreementJPAMapper {

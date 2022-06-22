@@ -10,9 +10,23 @@ import tech.zerofiltre.freeland.collab.infra.providers.database.client.model.*;
 
 import java.util.*;
 
-//@Service
-//@Transactional
-//@RequiredArgsConstructor
-//public class ClientDatabaseProvider implements ClientProvider {
-//
-//}
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class ClientDatabaseProvider implements ClientProvider {
+
+    private final ClientJPARepository repository;
+    private final ClientJPAMapper mapper;
+
+    @Override
+    public Optional<Client> clientOfId(ClientId clientId) {
+        return repository.findById(clientId.getSiren())
+                .map(mapper::fromJPA);
+    }
+
+    @Override
+    public Client registerClient(Client client) {
+        ClientJPA clientJPA = mapper.toJPA(client);
+        return mapper.fromJPA(repository.save(clientJPA));
+    }
+}
