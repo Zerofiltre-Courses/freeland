@@ -1,4 +1,4 @@
-package tech.zerofiltre.freeland.billing.infra.model;
+package tech.zerofiltre.freeland.collab.infra.providers.notification.model;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;

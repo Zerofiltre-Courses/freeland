@@ -23,7 +23,7 @@ import tech.zerofiltre.freeland.billing.domain.payment.model.*;
 import tech.zerofiltre.freeland.billing.domain.serviceContract.*;
 import tech.zerofiltre.freeland.billing.domain.serviceContract.model.*;
 import tech.zerofiltre.freeland.billing.infra.mapper.*;
-import tech.zerofiltre.freeland.billing.infra.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.notification.model.*;
 
 import java.util.*;
 import java.util.concurrent.*;

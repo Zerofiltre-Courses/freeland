@@ -9,7 +9,7 @@ import tech.zerofiltre.freeland.billing.domain.bill.*;
 import tech.zerofiltre.freeland.billing.domain.payment.*;
 import tech.zerofiltre.freeland.billing.domain.serviceContract.*;
 import tech.zerofiltre.freeland.billing.infra.mapper.*;
-import tech.zerofiltre.freeland.billing.infra.model.*;
+import tech.zerofiltre.freeland.collab.infra.providers.notification.model.*;
 
 @Slf4j
 @Component
